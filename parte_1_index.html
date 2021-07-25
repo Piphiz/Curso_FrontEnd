@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biruliru</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        .square {
+            width: 200px;
+            height: 200px;
+            max-width: 200px;
+            max-height: 200px;
+            border-color: black;
+            border-style: solid;
+            border-radius: 10px;
+        }
+        #square1{
+            background-color: red;
+        }
+        #square2{
+            background-color: green;
+        }
+        #square3{
+            background-color: blue;
+        }
+        h1, h2, h3, h4, h5, h6 {
+        text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Curso de Ferias UN1D3V 2021/2</h1>
+
+    <div class="row mt-5 justify-content-center">
+        <h3>Atividade 01</h3>
+        <button class="btn btn-danger col-3" onclick="calcularAumento()">Calc Aumento</button>
+    </div>
+
+    <div class="row mt-5 justify-content-center">
+        <h3>Atividade 02</h3>
+        <button class="btn btn-danger col-3" onclick="calcularBaskhara()">Calc Baskhara</button>
+    </div>
+
+    <div class="row mt-5 justify-content-center">
+        <h3>Atividade 03</h3>
+        <button class="btn btn-danger col-3" onclick="listarResultados()">Listar Resultados</button>
+    </div>
+
+    <div class="row mt-5 justify-content-center">
+        <h3>Atividade 04</h3>
+        <button class="btn btn-danger col-3" onclick="listarCursos()">Listar Cursos</button>
+    </div>
+
+    <div class="row mt-5 justify-content-center">
+        <h3>Atividade 05</h3>
+        <button class="btn btn-danger col-3" onclick="separator(numbers)">Separador</button>
+    </div>
+
+    <div class="row mt-5 justify-content-center" id="box">
+        <div class="row justify-content-center mb-3">
+            <h3>Atividade 06</h3>
+            <button class="btn btn-danger col-3" onclick="addName(names, selectId())">Adicionar Nome</button>
+        </div>
+    </div>
+
+    <div class="row mt-5 justify-content-center">
+        <h3>Atividade 07</h3>
+        <div id="square1" class="square col" value="Quadrado 1"></div>
+        <div id="square2" class="square col" value="Quadrado 2"></div>
+        <div id="square3" class="square col" value="Quadrado 3"></div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="row justify-content-center mb-3">
+            <h3>Atividade 08</h3>
+            <button class="btn btn-danger col-3" onclick="showBonus()">Mostrar Cards</button>
+        </div>
+        <div class="row mt-5 justify-content-center" id="listagem"></div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="row justify-content-center mb-3">
+            <h3>Atividade 09</h3>
+            <button class="btn btn-danger col-3" onclick="carregarTextos()">Mostrar Textos</button>
+        </div>
+        <div class="row justify-content-center">
+            <div class="list-group col-8" id="groupTexts"></div>
+        </div>
+    </div>
+    
+    <script src="./atividadeDia1.js"></script>
+    <script src="./atividadeDia2.js"></script>
+    <script src="./atividadeDia3.js"></script>
+    <script src="./atividadeDia4.js"></script>
+    <script src="./atividadeDia5.js"></script>
+    <script src="./atividadeDia6.js"></script>
+
+</body>
+
+</html>

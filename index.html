@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primeiro programa em Vue JS</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        h1,
+        h3 {
+            text-align: center;
+        }
+
+        .input-group button {
+            width: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Primeiro dia de Vue</h1>
+    <div id="app">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mt-3">
+                    <div v-if="name.length < 10" class="alert alert-success" role="alert">
+                        Estou aqui
+                    </div>
+                    <h1>{{ name | capitalize }}</h1>
+                </div>
+                <div class="col-md-12 mt-3">
+                    <div class="mb-3">
+                        <label for="nome" class="form-label">Nome</label>
+                        <input v-model="name" type="text" class="form-control" id="nome">
+                    </div>
+                </div>
+                <div class="col-md-12 mt-3">
+                    <ul>
+                        <li v-for="number of numbers" class="list-group-item">{{number}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5" id="atividade10">
+        <div class="col-md-12 mt-3">
+            <div v-if="checker" class="alert alert-danger" role="alert">
+                Insert a valid value
+            </div>
+        </div>
+        <div class="row justify-content-center mb-3">
+            <h3>Atividade 10</h3>
+            <div class="mb-3">
+                <label for="nome" class="form-label">Username</label>
+                <input v-model="username" type="text" class="form-control" id="nome"
+                    placeholder="Digite o nome de usuario">
+            </div>
+            <button class="btn btn-danger col-3" @click="carregarPerfil">Load profile</button>
+        </div>
+        <div class="row justify-content-center" v-if="cardActive">
+            <div class="card col-md-8">
+                <div class="row g-0">
+                    <div class="col-md-3">
+                        <img :src="profilePicture" class="img-thumbnail">
+                    </div>
+                    <div class="col-md-5">
+                        <div class="card-body">
+                            <h5 class="card-title">User Profile</h5>
+                            <p class="card-text">Name: {{ userGithub }}</p>
+                            <p class="card-text">Location: {{ location != null ? location : "N/A" }}</p>
+                            <p class="card-text">URL: <a :href="urlHtml">{{ urlHtml }}</a></p>
+                            <p class="card-text">Public Repositories:</p>
+                            <ul>
+                                <li v-for="repositorie of repositoriesGithub" :key="repositorie.name"
+                                    class="list-group-item">
+                                    <p>Name: {{ repositorie.name }}</p>
+                                    <p>Description: {{ repositorie.description != null ? repositorie.description : "N/A"
+                                        }}</p>
+                                    <p>URL: <a :href="repositorie.urlHtml">{{ repositorie.urlHtml }}</a></p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center mt-3 mb-3">
+                <button class="btn btn-danger col-3" @click="limparPerfil">Clear profile</button>
+            </div>
+        </div>
+    </div>
+
+    <h1 class="mt-5 mb-3">Segundo dia de Vue</h1>
+
+    <div id="bk">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="row">
+                        <div v-for="product of products" class="col-md-4">
+                            <div class="card mb-3">
+                                <img :src="product.image" class="card-img-top" alt="produto 1">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ product.name }}</h5>
+                                    <p class="card-text">{{ product.description }}</p>
+                                    <h4>{{ product.price | formatMoney }}</h4>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" v-model="product.amount" disabled>
+                                        <button @click="removeProduct(product)" class="btn btn-danger" type="button">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M18 12H6" />
+                                            </svg>
+                                        </button>
+                                        <button @click="addProduct(product)" class="btn btn-primary" type="button">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Produtos Selecionados</h4>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-striped mb-0">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Produto</th>
+                                        <th scope="col">Quantidade</th>
+                                        <th scope="col">Preco</th>
+                                        <th scope="col">Subtotal</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="product of selectedProducts">
+                                        <td>{{ product.name }}</td>
+                                        <td>{{ product.amount }}</td>
+                                        <td>{{ product.price | formatMoney }}</td>
+                                        <td>{{ (product.amount * product.price) | formatMoney }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="atividade11" class="row mt-5">
+        <div class="row justify-content-center mb-3">
+            <h3>Atividade 11</h3>
+        </div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-11 mt-1">
+                                    Sugestões para você ︎&#128521;
+                                </div>
+                                <div class="col-1 d-grid gap-2 justify-content-md-end">
+                                    <button @click="clearList" type="button" class="btn"
+                                        style="outline: none; box-shadow: none;"><span
+                                            class="text-danger">Limpar</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Escolha seus assuntos favoritos e receba conteúdos selecionados para
+                                você!</p>
+                            <div class="row">
+                                <div v-for="(notice, index) of typesOfNotices" class="col-md-auto ms-0 me-0">
+                                    <div @click="selectItem(index)" class="card border-light mb-3 " :class="notice.status ? 'bg-danger text-light' : 'text-danger'">
+                                        <div class="card-body">
+                                            <a>{{ notice.name }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-danger btn-lg" type="button" :disabled='isDisabled'>Seguir
+                                    Assuntos</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./app.js"></script>
+    <script src="./atividadeDia7.js"></script>
+    <script src="./atividadeDia8.js"></script>
+
+    <script>
+    </script>
+
+</body>
+
+</html>
